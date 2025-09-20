@@ -1,12 +1,35 @@
+@import "tailwindcss";
+
+@font-face {
+    font-family: 'Icons';
+    src: url('/images/icons/customicons.woff') format('woff');
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: var(--color-primary-dark);
+  --foreground: var(--color-primary-light);
+
+}
+
+@theme {
+  --color-primary-accent: #C8FF00;
+  --color-primary-accent-shade:#89AA13;
+  --color-secondary-accent: #FF19E8;
+  --color-primary-dark: #1E201D;
+  --color-secondary-dark: #262825;
+  --color-primary-light: #E6E8E1;
+  --text-body: 1rem;
+  --text-body--font-weight: 300;
+  --text-small: 0.875rem;
+  --text-small--font-weight: 300;
+  --text-header: 1.25rem;
+  --text-header--font-weight: 500;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: var(--color-primary-dark);
+    --foreground: var(--color-primary-light);
   }
 }
 
@@ -19,16 +42,11 @@ body {
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Inter, Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
 
 a {
   color: inherit;
@@ -39,4 +57,45 @@ a {
   html {
     color-scheme: dark;
   }
+}
+
+.glass-bg {
+  background-image: url('/images/glass_background.png');
+  background-size: 110% 100%;
+}
+
+
+
+.button {
+  border-bottom: 0.313rem solid var(--color-primary-accent-shade);
+  border-radius: 0.5rem;
+  padding: 0 1.25rem 0 1.25rem;
+  height: 3rem;
+  font-size: 16px;
+  font-weight: 300;
+  background-color: var(--color-primary-accent);
+  color: var(--color-primary-dark);
+}
+
+.button:hover {
+  background: var(--color-primary-accent-shade);
+  border: none;
+  transition: cubic-bezier(0,0,.03,.99) 200ms;
+}
+
+.demo-icon {
+    font-family: "Icons";
+    font-style: normal;
+    font-weight: normal;
+    display: inline-block;
+    text-decoration: inherit;
+    width: 1em;
+    margin-right: .2em;
+    text-align: center;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1em;
+    /* Font smoothing. That was taken from TWBS */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
