@@ -9,9 +9,11 @@ export default function TopMenu() {
             <p id="UserName" className="pl-4 text-body">username</p>
         </div>
     </a>
+    <a href="/login"> 
     <div>
         <Image src="/images/burger.png" width={23} height={20} alt='burger menu' />
     </div>
+    </a>
 </div>
       );
 }
