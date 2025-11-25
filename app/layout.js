@@ -1,5 +1,7 @@
 import "./globals.css";
 import BottomNav from "@/app/ui/BottomNav.js";
+import { UserProvider } from '@/app/context/UserContext';
+import getUserData from '@/app/api/getUserData';
 
 
 export const metadata = {
@@ -7,13 +9,17 @@ export const metadata = {
   description: "dont make me do metadata now",
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const profile = await getUserData();
+
   return (
     <html lang="en">
       <body>
         <div className="flex justify-center">
           <div className="container w-full px-5 pt-5">
-            {children}
+            <UserProvider profile={profile}>
+              {children}
+            </UserProvider>
             <BottomNav />
           </div>
         </div>
@@ -21,3 +27,4 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+

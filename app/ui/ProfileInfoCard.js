@@ -1,20 +1,26 @@
-import getUserData from '@/app/api/getUserData.js';
+"use client";
 import Image from 'next/image';
+import { useUser } from '@/app/context/UserContext';
+import { redirect } from 'next/navigation';
 
-export default async function ProfileInfoCard() {
-    const profile = await getUserData(); // ← direct await! Magic!
+export default function ProfileInfoCard() {
+    const profile =useUser();
+    if (!profile) {
+    redirect('/login');
+  }
+
+    
     const avatarUrl = "/images/ava" + profile?.avatar + ".png";
     return (
         <>
-            
             <Image
-                src={avatarUrl || '/images/icon.png'}
+                src={avatarUrl}
                 alt="Profile Avatar"
                 width={40}
                 height={40}
                 className="avatar-image"
             />
-            <p>sdf: {profile.display_username}</p>
+            <p>{profile.display_username}</p>
 
         </>
     );

@@ -1,5 +1,4 @@
 import { signOut } from './actions.js';
-import Image from 'next/image';
 import ButtonStandard from '@/app/ui/Buttons.js';
 import ProfileInfoCard from '@/app/ui/ProfileInfoCard.js';
 

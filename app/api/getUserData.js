@@ -4,7 +4,7 @@ export default async function getUserData() {
   const supabase = await createClient()
 
   const { data: { user } } = await supabase.auth.getUser();
-if (!user) redirect('/');
+if (!user) return(null);
 
 
   const { data: profile } = await supabase
