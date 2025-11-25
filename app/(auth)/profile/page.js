@@ -1,5 +1,6 @@
 import { signOut } from './actions.js';
 import Image from 'next/image';
+import ButtonStandard from '@/app/ui/Buttons.js';
 
 
 export const metadata = {
@@ -17,9 +18,8 @@ export default function Profile() {
       </div>
       
       <form action={signOut}>
-        <button className='bg-primary-accent hover:bg-primary-accent-shade text-primary-dark' type="submit">
-          log out ig?
-        </button>
+      
+        <ButtonStandard title="Sign out"/>
       </form>
       </div>
   );

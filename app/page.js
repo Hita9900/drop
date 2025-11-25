@@ -18,7 +18,7 @@ export default function Home() {
         <div className="glass-bg p-8 rounded-xl bg-cover bg-center">
           <p className="text-small opacity-50 ">Day 21</p>
           <p className="text-lg mt-2 mb-3">Drop a song that has exactly 6 letters for the title</p>
-          <ButtonStandard title="Drop Your Song" icon="&#xe80a;"/>
+          <ButtonStandard title="Drop Your Song" icon="&#xe80a;" address="/submit"/>
         </div>
       </div>
       <div className="h-10"></div>
