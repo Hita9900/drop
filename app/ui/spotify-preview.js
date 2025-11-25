@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import {formatDuration} from '../(auth)/utils/secToMin.js';
 
 export default function SpotifyPreview() {
   const [url, setUrl] = useState('');
@@ -18,12 +19,12 @@ export default function SpotifyPreview() {
         setError(data.error);
       } else {
         setTrack(data);
+        
       }
     } catch (err) {
       setError('Something went wrong');
     }
   };
-
   return (
     <div>
       <h1>Song Preview</h1>
@@ -42,6 +43,9 @@ export default function SpotifyPreview() {
         <div>
           <h2>{track.title}</h2>
           <p>Artist: {track.artist}</p>
+          <p>Genre: {track.genres}</p>
+          <p>year: {track.year}</p>
+          <p>ksdfga:{formatDuration(track.duration_ms)}</p>
           {track.coverArt && <img src={track.coverArt} alt="Cover art" width="200" />}
         </div>
       )}
