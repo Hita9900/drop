@@ -1,50 +1,69 @@
+// app/api/spotify-track/route.ts
+
 import SpotifyWebApi from 'spotify-web-api-node';
+const spotifyApi = new SpotifyWebApi();
 
-   const spotifyApi = new SpotifyWebApi();
+export async function GET(req) {
+  try {
+    const { searchParams } = new URL(req.url);
+    const url = searchParams.get('url');
 
-   export async function GET(req) {
-     try {
-       const { searchParams } = new URL(req.url);
-       const url = searchParams.get('url');
-       console.log('URL:', url);
-       if (!url) {
-         return Response.json({ error: 'No URL provided' }, { status: 400 });
-       }
+    if (!url) {
+      return Response.json({ error: 'No URL provided' }, { status: 400 });
+    }
 
-       //gets the track id
-       const trackId = url.split('/track/')[1]?.split('?')[0];
-       if (!trackId || trackId.length !== 22) {
-         return Response.json({ error: 'Invalid track ID format' }, { status: 400 });
-       }
+    const trackId = url.split('/track/')[1]?.split('?')[0];
+    if (!trackId || trackId.length !== 22) {
+      return Response.json({ error: 'Invalid Spotify track URL' }, { status: 400 });
+    }
 
-       const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-       const tokenResponse = await fetch(baseUrl+'/api/spotify-token', {
-         cache: 'no-store',
-         headers: { 'Accept': 'application/json' }
-       });
-       console.log('response url= ',tokenResponse.url);
-       if (!tokenResponse.ok) {
-         const errorText = await tokenResponse.text();
-         console.error('Token Fetch Error:', errorText);
-         return Response.json({ error: 'Failed to get token', details: errorText }, { status: tokenResponse.status });
-       }
+    // Fetch fresh token
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+    const tokenRes = await fetch(`${baseUrl}/api/spotify-token`, { cache: 'no-store' });
+    if (!tokenRes.ok) throw new Error('Failed to get token');
+    const { accessToken } = await tokenRes.json();
+    spotifyApi.setAccessToken(accessToken);
 
-       const tokenData = await tokenResponse.json();
-       if (tokenData.error) {
-         return Response.json({ error: 'Failed to get token' }, { status: 500 });
-       }
+    // Get track + album info
+    const trackData = await spotifyApi.getTrack(trackId);
+    const track = trackData.body;
 
-       spotifyApi.setAccessToken(tokenData.accessToken);
-       const data = await spotifyApi.getTrack(trackId);
-       const track = data.body;
+    const mainArtistId = track.artists[0].id;
 
-       return Response.json({
-         title: track.name,
-         artist: track.artists[0].name,
-         coverArt: track.album.images[0]?.url || '',
-       });
-     } catch (error) {
-       console.error('Track Error:', error.message, error.cause);
-       return Response.json({ error: 'Failed to fetch track data', details: error.message }, { status: 500 });
-     }
-   }
+    // Get artist for genres
+    const artistData = await spotifyApi.getArtist(mainArtistId);
+    const rawGenres = artistData.body.genres; // ← these come lowercase + no spaces
+
+    // Format genres nicely: "metalcore, djent, progressive metalcore"
+    const formattedGenres = rawGenres
+      .map((g) =>
+        g
+          .split(/[\s-_]+/)           // split on space, _, -
+          .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+          .join(' ')
+      )
+      .join(', ');
+
+    // Get release year from album release_date
+    // Spotify gives: "2023-05-12" or sometimes just "2023"
+    const releaseDate = track.album.release_date;
+    const year = releaseDate?.split('-')[0] || null;
+
+    return Response.json({
+      title: track.name,
+      artist: track.artists[0].name,
+      coverArt: track.album.images[0]?.url || null,
+      genres: formattedGenres || 'No genre available', // ← now pretty!
+      year: year ? Number(year) : null,               // ← clean number or null
+      duration_ms: track.duration_ms,
+      preview_url: track.preview_url,
+    });
+
+  } catch (error) {
+    console.error('Spotify error:', error);
+    return Response.json(
+      { error: 'Failed to fetch track', details: error.message },
+      { status: 500 }
+    );
+  }
+}
