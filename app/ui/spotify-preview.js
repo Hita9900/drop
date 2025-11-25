@@ -45,7 +45,7 @@ export default function SpotifyPreview() {
           <p>Artist: {track.artist}</p>
           <p>Genre: {track.genres}</p>
           <p>year: {track.year}</p>
-          <p>ksdfga:{formatDuration(track.duration_ms)}</p>
+          <p>Duratiuon: {formatDuration(track.duration_ms)}</p>
           {track.coverArt && <img src={track.coverArt} alt="Cover art" width="200" />}
         </div>
       )}
