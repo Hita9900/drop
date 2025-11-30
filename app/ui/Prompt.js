@@ -1,5 +1,5 @@
 import ButtonStandard from "./Buttons";
-import GetDailyPrompt from '@/app/api/getDailyPrompt.js';
+import GetDailyPrompt from '@/app/actions/getDailyPrompt.js';
 
 export default function Prompt() {
     const message = GetDailyPrompt();

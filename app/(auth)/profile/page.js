@@ -1,4 +1,4 @@
-import { signOut } from './actions.js';
+import { signOut } from '../../actions/signOut.js';
 import ButtonStandard from '@/app/ui/Buttons.js';
 import ProfileInfoCard from '@/app/ui/ProfileInfoCard.js';
 

@@ -1,7 +1,7 @@
 import "./globals.css";
 import BottomNav from "@/app/ui/BottomNav.js";
 import { UserProvider } from '@/app/context/UserContext';
-import getUserData from '@/app/api/getUserData';
+import getUserData from '@/app/actions/getUserData';
 
 
 export const metadata = {
