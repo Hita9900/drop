@@ -34,7 +34,7 @@ export async function GET(req) {
     const artistData = await spotifyApi.getArtist(mainArtistId);
     const rawGenres = artistData.body.genres; // ← these come lowercase + no spaces
 
-    // Format genres nicely: "metalcore, djent, progressive metalcore"
+    // Format genres: "metalcore, djent, progressive metalcore"
     const formattedGenres = rawGenres
       .map((g) =>
         g
@@ -42,8 +42,6 @@ export async function GET(req) {
           .map(word => word.charAt(0).toUpperCase() + word.slice(1))
           .join(' ')
       )
-      .join(', ');
-
     // Get release year from album release_date
     // Spotify gives: "2023-05-12" or sometimes just "2023"
     const releaseDate = track.album.release_date;
@@ -52,10 +50,11 @@ export async function GET(req) {
     return Response.json({
       title: track.name,
       artist: track.artists[0].name,
-      coverArt: track.album.images[0]?.url || null,
-      genres: formattedGenres || 'No genre available', // ← now pretty!
-      year: year ? Number(year) : null,               // ← clean number or null
+      track_Id: trackId,
+      year: year ? Number(year) : null, 
+      genres: formattedGenres || null,
       duration_ms: track.duration_ms,
+      coverArt: track.album.images[0]?.url || null,
       preview_url: track.preview_url,
     });
 
