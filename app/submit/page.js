@@ -1,4 +1,6 @@
 import SpotifyPreview from '@/app/ui/spotify-preview';
+import Prompt from '@/app/ui/Prompt';
+import TopMenu from '@/app/ui/TopMenu';
 
 export const metadata = {
   title: "Drop | Submit",
@@ -8,8 +10,8 @@ export const metadata = {
 export default function Submit() {
   return (
     <>
-      <h2 className="font-inter">submit</h2>
-      <br/>
+    <TopMenu/>
+      <Prompt/>
       <SpotifyPreview />
     </>
   );

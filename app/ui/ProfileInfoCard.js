@@ -14,13 +14,13 @@ export default function ProfileInfoCard() {
     return (
         <>
             <Image
-                src={avatarUrl}
+                src={profile?.avatar ? "/images/ava" + profile.avatar + ".svg" : "/images/default-ava.svg"}
                 alt="Profile Avatar"
-                width={40}
-                height={40}
+                width={70}
+                height={70}
                 className="avatar-image"
             />
-            <p>{profile.display_username}</p>
+            <p>{profile?.display_username ? profile.display_username : <a href='/profile/setUpProfile'>Set Up a Username</a>}</p>
 
         </>
     );

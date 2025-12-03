@@ -1,4 +1,4 @@
-import { createClient } from '../utils/supabase/server.js'
+import { createClient } from '@/app/(auth)/utils/supabase/server.js'
 import { redirect } from 'next/navigation'
 
 export async function GET(request) {
@@ -14,12 +14,11 @@ export async function GET(request) {
       type,
       token_hash,
     })
+
     if (!error) {
-      // redirect user to specified redirect URL or root of app
-      redirect(next)
+      redirect(next)      // with your email link, this becomes /setUpProfile
     }
   }
 
-  // redirect the user to an error page with some instructions
   redirect('/error')
 }
