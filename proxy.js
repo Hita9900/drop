@@ -1,6 +1,6 @@
-import { updateSession } from '/app/(auth)/utils/supabase/middleware.js'
+import { updateSession } from '@/app/(auth)/utils/supabase/middleware.js'
 
-export async function middleware(request) {
+export async function proxy(request) {
   return await updateSession(request)
 }
 
