@@ -14,6 +14,7 @@
   --color-secondary-accent: #FF19E8;
   --color-primary-dark: #1E201D;
   --color-primary-light: #E6E8E1;
+  --color-shade-glass: #484C4320;
   --text-body: 1rem;
   --text-body--font-weight: 400;
   --text-small: 0.875rem;
@@ -21,6 +22,7 @@
   --text-header: 1.25rem;
   --text-header--font-weight: 500;
 }
+
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -62,7 +64,7 @@ a {
   background-image: url('/images/glass_background-50.png');
   background-size: 110% 100%;
   border: 1px solid;
-  border-image: linear-gradient(to right, #fff0 5%, #fff9 50%,#fff0 95%) 1;
+  border-image: linear-gradient(to right, #fff0 5%, #fff6 50%,#fff0 95%) 1;
 }
 
 
@@ -116,4 +118,7 @@ box-shadow: inset 0px 15px 10px -14px #0000009c;
 
 .submitShade{
   background: radial-gradient(circle, #C8FF0020 0%, #C8FF0000 20%);
+}
+.topplayer-boxshadow{
+  box-shadow: 0 0 0 12px var(--color-primary-accent-shade);
 }
