@@ -2,7 +2,7 @@ import GetDailyPrompt from '@/app/actions/getDailyPrompt.js';
 
 export function Prompt() {
     const Prompt = GetDailyPrompt();
-    return (<>
+    return (<div className='mx-auto max-w-xl'>
         <div className="h-10"></div>
         <h2 className="text-header ml-2 mb-4 font-wildworld">DAILY PROMT</h2>
         <div>
@@ -12,7 +12,7 @@ export function Prompt() {
             </div>
         </div>
         <div className="h-10"></div>
-    </>
+    </div>
     );
 }
 

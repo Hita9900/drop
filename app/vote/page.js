@@ -41,10 +41,7 @@ export default async function votePage() {
 
                 
                 <div className="mb-10">
-                    <h3 className='font-wildworld text-header pt-10'>VOTING</h3>
-                    <p className="font-light text-small">more songs will be added throughout the day</p>
-                    <div className="flex text-small mb-14 font-medium"><span className="mt-[4px]"><InfoIcon size={16} color="var(--color-primary-accent)"/></span><p>&nbsp;you can’t take back your votes!</p></div>
-
+                    
                     <h2 className="text-header mb-6">Your Votes Today</h2>
                     {votedSongs.map((song) => (
                         <div key={song.id} className="pb-4 flex items-center opacity-80">
@@ -67,6 +64,10 @@ export default async function votePage() {
             {/* Not Voted Songs List */}
             {notVotedSongs.length > 0 && (
                 <div>
+                    <h3 className='font-wildworld text-header pt-10'>VOTING</h3>
+                    <p className="font-light text-small">more songs will be added throughout the day</p>
+                    <div className="flex text-small mb-14 font-medium"><span className="mt-[4px]"><InfoIcon size={16} color="var(--color-primary-accent)"/></span><p>&nbsp;you can’t take back your votes!</p></div>
+                        
                         <h2 className="text-header mb-6">Available to vote</h2>
                     {notVotedSongs.map((song) => (
                         <div key={song.id} className="pb-4 flex items-center">
