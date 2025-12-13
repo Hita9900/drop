@@ -1,23 +1,38 @@
 import Link from "next/link";
 import TodaySubmits from "../actions/TodaySubmits";
-import Image from 'next/image';
+import { ButtonMinimal } from "./Buttons";
 
 export default async function TodaySubmitCard() {
     const allsongs = await TodaySubmits();
     const songs = allsongs.slice(0, 5);
+    
+    if (allsongs.length <= 0 ){
+        
+        return(
+            <div className="flex flex-col text-center">
+            <p className="text-small opacity-60">the list updates every 15 minutes</p>
+            <p className="mb-2">Be the first to submit a song!</p>
+            <ButtonMinimal title='Submit' address='/submit'/>
+            </div>
+        );
+    }
 
     return (
 
-        <div className="flex">
-            {songs.map((song, index) => (
-                <div key={index} style={{ marginBottom: '8px' }}>
-                    <Image src={song.cover_art} width={100} height={100} alt={song.title + " by " + song.artist}></Image>
+
+            <div className="max-w-xl mx-auto grid grid-cols-3 gap-3 sm:gap-4 md:gap-6">
+            
+
+            { songs.map((song, index) => (
+                <div key={index} className={'aspect-square rounded-[10px]'} style={{backgroundImage: "url(" + song.cover_art + ")", backgroundSize: '100%', backgroundRepeat: 'no-repeat'}} >
+                    
+                    
 
                 </div>
             ))}
             <Link href={"/vote"}>
-            <div style={{ backgroundColor: 'green', height: '100px', width: '100px' }}>
-                see more etc
+            <div className='bg-primary-accent text-primary-dark aspect-square rounded-[10px] overlflow-hidden p-3' style={{backgroundImage: "url(./images/voteLinkImage.svg)", backgroundSize: '100%', backgroundRepeat: 'no-repeat'}}>
+                <p className="small-text">See all & Vote</p>
             </div>
             </Link>
         </div>

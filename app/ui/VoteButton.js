@@ -3,6 +3,7 @@
 import { useTransition } from 'react';
 import { voteForSong } from '@/app/actions/voteForSong';
 import { useRouter } from 'next/navigation';
+import { CornerRightDown } from "lucide-react";
 
 export default function VoteButton({ songId }) {
     const [isPending, startTransition] = useTransition();
@@ -23,9 +24,10 @@ export default function VoteButton({ songId }) {
         <button
             onClick={handleVote}
             disabled={isPending}
-            className={`button ${isPending ? 'opacity-50 cursor-not-allowed' : ''}`}
-        >
-            {isPending ? 'Voting...' : 'Vote'}
+            className={`bg-primary-accent flex items-center h-10 px-4 text-primary-dark rounded-full ${isPending ? 'opacity-50 cursor-not-allowed' : ''}`}
+        >{isPending ? 'on it' : 'Vote'}
+            <CornerRightDown size={16}/>
+            
         </button>
     );
 }

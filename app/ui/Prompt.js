@@ -1,19 +1,31 @@
-import ButtonStandard from "./Buttons";
 import GetDailyPrompt from '@/app/actions/getDailyPrompt.js';
 
-export default function Prompt() {
+export function Prompt() {
     const Prompt = GetDailyPrompt();
     return (<>
         <div className="h-10"></div>
-        <h2 className="text-header mb-4">Daily Prompt</h2>
+        <h2 className="text-header ml-2 mb-4 font-wildworld">DAILY PROMT</h2>
         <div>
             <div className="glass-bg p-8 rounded-xl bg-cover bg-center">
                 {Prompt.day && <p className="text-small opacity-50 ">Day {Prompt.day}</p>}
-                <p className="text-lg mt-2 mb-3">{Prompt.text}</p>
-                {Prompt.day > <ButtonStandard title='Drop a song'/>}
+                <p className="text-body mt-2 mb-1">{Prompt.text}</p>
             </div>
         </div>
         <div className="h-10"></div>
+    </>
+    );
+}
+
+export function PromptCompact() {
+    const Prompt = GetDailyPrompt()
+    return (<>
+
+
+        <div className="py-4 pl-14 pr-4 rounded-xl bg-cover bg-center mb-2 bg-[url(/images/SubmitEntryBack.svg)]">
+            <p className="text-small leading-tight opacity-50 ">Today's Prompt</p>
+            <p className="text-body leading-tight">{Prompt.text}</p>
+        </div>
+
     </>
     );
 }

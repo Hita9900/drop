@@ -4,6 +4,7 @@ import { useState, useEffect, useActionState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { setProfileData } from '@/app/actions/setProfileData';
+import { toast } from 'react-toastify';
 
 const adjectives = [
   'booze',
@@ -76,7 +77,7 @@ export default function Profile() {
   useEffect(() => {
     if (state?.success && !state.error && !hasRedirected) {
       setHasRedirected(true);
-      alert('Profile saved successfully!');
+      toast.success('profile saved!');
       router.push('/profile');
     }
   }, [state, hasRedirected, router]);

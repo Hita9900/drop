@@ -11,7 +11,8 @@ export default function Submit() {
   return (
     <>
     <TopMenu/>
-      <Prompt/>
+    <p className='font-wildworld text-header pt-10'>SUBMIT ENTRY</p>
+    <p className='text-small mt-2 mb-10'>Paste the link and press preview, need more help for submitting? <a className='underline! text-primary-accent! italic! hover:text-primary-accent-shade!' href='#'>click here</a></p>
       <SpotifyPreview />
     </>
   );

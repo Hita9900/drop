@@ -36,7 +36,7 @@ export default async function TodaySubmits() {
         async () => getCachedSongs(today),
         ['today-submits', today],
         {
-            revalidate: 1800,
+            revalidate: 900,
             tags: ['today-submits']
         }
     )();

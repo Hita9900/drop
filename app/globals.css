@@ -1,24 +1,21 @@
 @import "tailwindcss";
 
-@font-face {
-    font-family: 'Icons';
-    src: url('/images/icons/customicons.woff') format('woff');
-}
-
 :root {
   --background: var(--color-primary-dark);
   --foreground: var(--color-primary-light);
-
+  --font-montserrat: 'Montserrat', Inter;
+  --font-wildworld: 'wildworld', var(--font-montserrat);
 }
 
 @theme {
   --color-primary-accent: #C8FF00;
+  --color-primary-accent-60: #C8FF0060;
   --color-primary-accent-shade:#89AA13;
   --color-secondary-accent: #FF19E8;
   --color-primary-dark: #1E201D;
   --color-primary-light: #E6E8E1;
   --text-body: 1rem;
-  --text-body--font-weight: 300;
+  --text-body--font-weight: 400;
   --text-small: 0.875rem;
   --text-small--font-weight: 300;
   --text-header: 1.25rem;
@@ -36,12 +33,15 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  font-family: var(--font-montserrat);  
+
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Inter, Arial, Helvetica, sans-serif;
+  background-image: url(/images/BACKSHADE2.png);
+  background-repeat: no-repeat;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -59,8 +59,10 @@ a {
 }
 
 .glass-bg {
-  background-image: url('/images/glass_background.png');
+  background-image: url('/images/glass_background-50.png');
   background-size: 110% 100%;
+  border: 1px solid;
+  border-image: linear-gradient(to right, #fff0 5%, #fff9 50%,#fff0 95%) 1;
 }
 
 
@@ -97,4 +99,21 @@ a {
     /* Font smoothing. That was taken from TWBS */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+.halo{
+  box-shadow: 0 0 10px #C8FF00a0;
+}
+
+.font-wildworld {
+  font-family: var(--font-wildworld);
+}
+
+.textbox-shadow{
+  -webkit-box-shadow: inset 0px 15px 10px -14px #0000009c; 
+box-shadow: inset 0px 15px 10px -14px #0000009c;
+}
+
+.submitShade{
+  background: radial-gradient(circle, #C8FF0020 0%, #C8FF0000 20%);
 }
