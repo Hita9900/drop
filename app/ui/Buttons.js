@@ -1,12 +1,10 @@
 import { CornerRightDown } from "lucide-react";
 import Link from "next/link";
 
-export function ButtonStandard({title, icon, address}) {
+export function ButtonStandard({title, address}) {
     return(
        <a href={address}>
       <button className="button">
-        {icon && <i className="demo-icon">{icon}</i>}
-        {icon && <>&nbsp;</>}
         {title}
       </button>
     </a>

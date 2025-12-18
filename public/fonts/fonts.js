@@ -1,9 +1,6 @@
-// app/lib/fonts.ts   (or wherever your Montserrat is)
-
 import { Montserrat } from 'next/font/google';
 import localFont from 'next/font/local';
 
-// Existing Google Montserrat
 export const montserrat = Montserrat({
   subsets: ['latin'],
   variable: '--font-montserrat',
@@ -11,7 +8,18 @@ export const montserrat = Montserrat({
   display: 'swap',
 });
 
-// New: Local Wild World (super simple since it's single weight)
+export const yekan = localFont({
+  src: 'YekanBakhLight.ttf',   
+  variable: '--font-yekan',
+  display: 'swap',
+});
+
+export const platinum = localFont({
+  src: 'Platinum.ttf',   
+  variable: '--font-platinum',
+  display: 'swap',
+});
+
 export const wildworld = localFont({
   src: 'WILDWORLD.woff2',    
   variable: '--font-wildworld',

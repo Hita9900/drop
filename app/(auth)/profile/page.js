@@ -1,6 +1,8 @@
 import { signOut } from '../../actions/signOut.js';
 import { ButtonStandard } from '@/app/ui/Buttons.js';
 import ProfileInfoCard from '@/app/ui/ProfileInfoCard.js';
+import {useTranslations} from 'next-intl';
+import { useLocale } from 'next-intl';
 
 
 export const metadata = {
@@ -9,15 +11,19 @@ export const metadata = {
 };
 
 export default function Profile() {
+  const t = useTranslations('Profile');
+  const locale = useLocale();
 
   return (
     <div className='flex justify-center items-center flex-col'>
-      <p className='mb-5'>Profile</p>
+      
       <ProfileInfoCard />
 
-      <form action={signOut}>
-        <ButtonStandard title="Sign out" />
-      </form>
+      <button
+        onClick={signOut}
+        className={`button ${locale === 'fa'? 'font-yekan pt-1!':''}`}>
+          {t('signOutButton')}
+      </button>
     </div>
   );
 }

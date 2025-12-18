@@ -9,9 +9,9 @@ export default function TopMenu() {
 
     if (!profile) {
         return (
-            <div className="flex justify-between items-center">
+            <div className="flex justify-between items-start">
                 <div className="flex items-center">
-                    <Link href="/login"><p id="UserName" className="pl-4 text-body">Log In / Sign Up</p></Link>
+                    <Link href="/login"><p id="UserName" className="indent-2 text-body">Log In / Sign Up</p></Link>
                 </div>
 
                 <div>
@@ -23,7 +23,7 @@ export default function TopMenu() {
     };
 
     return (
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-start">
             <div className="flex items-center">
                 <Link href="/profile">
                 <div className='bg-primary-accent rounded-full overflow-hidden halo'>
@@ -33,7 +33,7 @@ export default function TopMenu() {
                         className="avatar-image" />
                         </div>
                 </Link>
-                <p id="UserName" className={"pl-4 text-body"}>{profile?.display_username ? <Link href="/profile">{profile.display_username}</Link> : <Link href='/profile/setUpProfile'>Set Up a Username</Link>}</p>
+                <p id="UserName" className={"indent-2 text-body"}>{profile?.display_username ? <Link href="/profile">{profile.display_username}</Link> : <Link href='/profile/setUpProfile'>Set Up a Username</Link>}</p>
 
             </div>
 

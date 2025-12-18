@@ -4,7 +4,9 @@ import getUserData from '@/app/actions/getUserData';
 import { Flip } from 'react-toastify';
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import { montserrat, wildworld } from '@/public/fonts/fonts';
+import { montserrat, wildworld, platinum, yekan } from '@/public/fonts/fonts';
+import { NextIntlClientProvider } from 'next-intl';
+import { getLocale } from 'next-intl/server';
 
 
 export const metadata = {
@@ -14,15 +16,21 @@ export const metadata = {
 
 export default async function RootLayout({ children }) {
   const profile = await getUserData();
+  const locale = await getLocale();
+  const dir = locale.startsWith('fa') ? 'rtl' : 'ltr';
 
   return (
-    <html lang="en" className={`${montserrat.variable} ${wildworld.variable}`}>
+    <html dir={dir} lang="en" className={`${montserrat.variable} ${wildworld.variable} ${platinum.variable} ${yekan.variable}`}>
       <body className="font-montserrat">
         <div className="flex justify-center">
           <div className="container w-full px-5 pt-5 pb-32">
-            <UserProvider profile={profile}>
-              {children}
-            </UserProvider>
+            <NextIntlClientProvider>
+
+              <UserProvider profile={profile}>
+                {children}
+              </UserProvider>
+
+            </NextIntlClientProvider>
             <ToastContainer
               position="top-center"
               autoClose={5000}

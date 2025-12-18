@@ -7,10 +7,15 @@ import { useTransition } from 'react';
 import { SubmitEntry } from '@/app/actions/submitEntry.js';
 import { useUser } from '@/app/context/UserContext';
 import { PromptCompact } from '@/app/ui/Prompt';
+import {useTranslations} from 'next-intl';
+import { useLocale } from 'next-intl';
+
 
 
 
 export default function SpotifyPreview() {
+  const locale = useLocale();
+  const t = useTranslations('Submit');
   const [url, setUrl] = useState('');
   const [track, setTrack] = useState(null);
   const [error, setError] = useState(null);
@@ -69,13 +74,13 @@ export default function SpotifyPreview() {
         <div className="grid grid-cols-5 gap-2 sm:gap-2">
 
           <input
-            className='bg-primary-light p-3 text-primary-dark col-span-3 rounded-lg text-small textbox-shadow'
+            className={`bg-primary-light p-3 text-primary-dark col-span-3 rounded-lg text-small textbox-shadow ${ locale ==='fa'? 'font-yekan':''}`}
             type="text"
             value={url}
             onChange={(e) => setUrl(e.target.value)}
-            placeholder="Paste Spotify link"
+            placeholder={t('submitPlaceHolder')}
           />
-          <button className='button col-span-2' type="submit">Preview</button>
+          <button className={`button col-span-2 ${locale === 'fa'? 'font-yekan pt-1!':''}`} type="submit">{t('submitPreviewButton')}</button>
         </div>
       </form>
 
@@ -84,19 +89,19 @@ export default function SpotifyPreview() {
       {track && (<>
         <div className='grid grid-cols-2 my-14 submitShade'>
           {track.coverArt && <div className="col-1 flex justify-end "><img src={track.coverArt} alt={track.title + " by " + track.artist} width="128" height="128" /></div>}
-          <div className='col-2 flex justify-end flex-col pl-5'>
+          <div className={`col-2 flex justify-end flex-col ${locale === 'fa'? 'pr-5': 'pl-5'}`}>
             <h2 className='text-header'>{track.title}</h2>
             <p className='text-body font-light'>By {track.artist}</p>
             <p className='text-small text-primary-accent opacity-80'>{track.year}</p>
           </div>
         </div>
     <div className='text-center'>
-      <p className='leading-tight mb-5'>are you sure you want to submit this song?</p>
+      <p className={`leading-tight mb-5 ${ locale ==='fa'? 'font-yekan':''}`}>{t('RUSureMessage')}</p>
       <button
         onClick={handleSaveToDatabase}
         disabled={isPending}
-        className={`button ${isPending ? 'opacity-50' : 'bg-primary-accent'}`+' w-full'}>
-        {isPending ? 'Submitting...' : 'Submit'}
+        className={`button w-full ${isPending ? 'opacity-50' : 'bg-primary-accent'} ${locale === 'fa'? 'font-yekan pt-1!':''}`}>
+        {isPending ? t('submitPendingButton') : t('submitSubmitButton')}
       </button>
     </div></>
 

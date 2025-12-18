@@ -5,6 +5,10 @@
   --foreground: var(--color-primary-light);
   --font-montserrat: 'Montserrat', Inter;
   --font-wildworld: 'wildworld', var(--font-montserrat);
+  --font-platinum: 'platinum', var(--font-yekan);
+  --font-yekan: 'yekan', Inter;
+
+
 }
 
 @theme {
@@ -22,7 +26,6 @@
   --text-header: 1.25rem;
   --text-header--font-weight: 500;
 }
-
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -86,23 +89,6 @@ a {
   transition: cubic-bezier(0,0,.03,.99) 200ms;
 }
 
-.demo-icon {
-    font-family: "Icons";
-    font-style: normal;
-    font-weight: normal;
-    display: inline-block;
-    text-decoration: inherit;
-    width: 1em;
-    margin-right: .2em;
-    text-align: center;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1em;
-    /* Font smoothing. That was taken from TWBS */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
 .halo{
   box-shadow: 0 0 10px #C8FF00a0;
 }
@@ -121,4 +107,12 @@ box-shadow: inset 0px 15px 10px -14px #0000009c;
 }
 .topplayer-boxshadow{
   box-shadow: 0 0 0 12px var(--color-primary-accent-shade);
+}
+
+.font-platinum {
+  font-family: var(--font-platinum);
+}
+
+.font-yekan {
+  font-family: var(--font-yekan);
 }

@@ -1,0 +1,69 @@
+{
+    "HomePage": {
+      "Home": "Home",
+      "Profile": "Profile",
+      "Submit": "Submit"
+    },
+
+    "Prompt":{
+      "day": "Day",
+      "Daily Prompt":"DAILY PROMT",
+      "todayPrompt":"Today's Prompt",
+      "PromptD1" : "1",
+      "PromptD2" : "2",
+      "PromptD3" : "3",
+      "PromptD4" : "4",
+      "PromptD5" : "5",
+      "PromptD6" : "6",
+      "PromptD7" : "7",
+      "PromptD8" : "8",
+      "PromptD9" : "9",
+      "PromptD10" : "10",
+      "PromptD11" : "11",
+      "PromptD12" : "12",
+      "PromptD13" : "13",
+      "PromptD14" : "14",
+      "PromptD15" : "15",
+      "PromptD16" : "16",
+      "PromptD17" : "17",
+      "PromptD18" : "18",
+      "PromptD19" : "19",
+      "PromptD20" : "20",
+      "PromptD21" : "21",
+      "PromptD22" : "22",
+      "PromptD23" : "23",
+      "PromptD24" : "24",
+      "PromptD25" : "25",
+      "PromptD26" : "26",
+      "PromptD27" : "27",
+      "PromptD28" : "28",
+      "PromptD29" : "29",
+      "PromptD30" : "30",
+      "ChallengeOver" : "The challenge is over! See you next time",
+      "UntilChallenge" : "until the challenge starts!"
+    },
+    "Submit":{
+      "submitTitle": "SUBMIT ENTRY",
+      "submitDesc": "Paste the link and press preview, need more help for submitting?",
+      "submitDescButton": "click here",
+      "submitPlaceHolder":"Paste Spotify link",
+      "submitPreviewButton":"preview",
+      "RUSureMessage": "are you sure you want to submit this song?",
+      "submitSubmitButton": "Submit",
+      "submitPendingButton": "Submiting..."
+    },
+    "Profile":{
+      "signOutButton":"Sign Out",
+      "LogInDesc" : "log in to your account",
+      "SignUpDesc" : "Create a new account quickly",
+      "LogIn" :"Log In",
+      "SignUp" :"Sign Up",
+      "LogInHere" :"Log In Here",
+      "SignUpHere" :"Sign Up Here",
+      "DontHaveAcc" : "Don't you have an account yet? ",
+      "HaveAcc" : "Already have an account? ",
+      "Password" : "Password",
+      "Email" : "Email"
+
+    }
+  }
