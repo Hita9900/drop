@@ -5,6 +5,14 @@
       "Submit": "Submit"
     },
 
+    "LeaderBoard":{
+      "Username":"username",
+      "Points": "point(s)",
+      "LeaderBoard": "Leaderboard",
+      "LeaderBoardDesc": "top players of past 3 days",
+      "AllTimeTopPlayers":"All time top players"
+    },
+
     "Prompt":{
       "day": "Day",
       "Daily Prompt":"DAILY PROMT",

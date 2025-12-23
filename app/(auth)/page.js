@@ -1,8 +1,8 @@
 import TopMenu from "@/app/ui/TopMenu.js";
 import { Prompt } from '@/app/ui/Prompt.js';
 import TodaySubmitCard from "../ui/TodaySubmitCard";
-import LeaderboardAllTime from "@/app/ui/leaderboardAll";
-import LeaderboardWeekly from "@/app/ui/leaderboardWeekly";  
+import AllTimeLeaderboard from "@/app/actions/AllTimeLeaderboard";
+import WeeklyLeaderboard from "@/app/actions/WeeklyLeaderboard";  
 
 export const metadata = {
   title: "Drop | Home",
@@ -16,11 +16,12 @@ export default function Home() {
       <Prompt/>
       <TodaySubmitCard />
       <div className="h-14"></div>
-      <LeaderboardWeekly/>
+      <AllTimeLeaderboard/>
       <div className="h-14"></div>
-      <LeaderboardAllTime/>
+      <WeeklyLeaderboard/>
       
 
     </>
   );
 }
+export const dynamic = 'force-dynamic';

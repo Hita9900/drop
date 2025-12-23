@@ -3,15 +3,20 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useUser } from '@/app/context/UserContext';
 import Sidebar from '@/app/ui/sidebar';
+import {useTranslations} from 'next-intl';
+import { useLocale } from 'next-intl';
+
 
 export default function TopMenu() {
+    const locale = useLocale();
+    const t = useTranslations('Profile');
     const profile = useUser();
 
     if (!profile) {
         return (
             <div className="flex justify-between items-start">
-                <div className="flex items-center">
-                    <Link href="/login"><p id="UserName" className="indent-2 text-body">Log In / Sign Up</p></Link>
+                <div className="flex items-center h-[54]">
+                    <Link href="/login"><p id="UserName" className={`indent-2 text-body ${locale ==='fa'? 'font-yekan':''}`}>{t('LogIn')} / {t('SignUp')}</p></Link>
                 </div>
 
                 <div>
@@ -33,7 +38,7 @@ export default function TopMenu() {
                         className="avatar-image" />
                         </div>
                 </Link>
-                <p id="UserName" className={"indent-2 text-body"}>{profile?.display_username ? <Link href="/profile">{profile.display_username}</Link> : <Link href='/profile/setUpProfile'>Set Up a Username</Link>}</p>
+                <p id="UserName" className={"indent-2 text-body"}>{profile?.display_username ? <Link href="/profile">{profile.display_username}</Link> : <Link href='/setUpProfile'>Set Up a Username</Link>}</p>
 
             </div>
 

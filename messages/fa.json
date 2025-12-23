@@ -4,6 +4,14 @@
       "Profile": "پروفایل",
       "Submit": "ثبت آهنگ"  
     },
+
+    "LeaderBoard":{
+      "Username":"نام بازیکن",
+      "Points": "امتیاز",
+      "LeaderBoard": "جدول امتیازات",
+      "LeaderBoardDesc": "شرکت کنندگان برتر سه روز اخیر",
+      "AllTimeTopPlayers":"بازیکنان برتر"
+    },
     
     "Prompt":{
       "day": "روز",

@@ -1,7 +1,7 @@
 import { createServerClient } from '@supabase/ssr';
 import { unstable_cache } from 'next/cache';
 
-export const getLeaderboardAllTime = unstable_cache(
+export const getAllTimeLeaderboard = unstable_cache(
   async () => {
     // Create an anonymous Supabase client for public queries (no cookies needed)
     const supabase = createServerClient(
