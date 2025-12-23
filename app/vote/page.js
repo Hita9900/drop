@@ -100,3 +100,5 @@ export default async function votePage() {
         </>
     );
 }
+//to fix tehran time 
+export const dynamic = 'force-dynamic';

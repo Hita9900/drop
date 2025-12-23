@@ -24,4 +24,5 @@ export default function Home() {
     </>
   );
 }
+//to fix tehran time 
 export const dynamic = 'force-dynamic';
