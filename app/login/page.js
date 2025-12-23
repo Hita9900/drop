@@ -4,6 +4,7 @@ import { signup } from '@/app/actions/signUp'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
+import { useActionState } from 'react' 
 import { useTranslations } from 'next-intl';
 import { useLocale } from 'next-intl';
 
@@ -12,13 +13,22 @@ export default function LoginPage() {
   const locale = useLocale();
   const t = useTranslations('Profile');
   const [isLogin, setIsLogin] = useState(true)
+  const [state, formAction, pending] = useActionState(isLogin ? login : signup,{ message: null })
+
+
 
   return (
     <div className='flex justify-center items-center flex-col pt-10'>
       <Link href={"/"}><Image src={'/images/logo.svg'} width={180} height={34} alt='drop logo' /></Link>
       <div className='h-10' />
       <div className='glass-bg p-6 rounded-2xl'>
-        <form className={locale === 'fa' ? 'font-yekan' : ''}>
+        <form action={formAction} className={locale === 'fa' ? 'font-yekan' : ''}>
+
+        {state?.message && (
+        <p className="text-red-500 text-small mt-2 mb-5 text-center font-bold" id="errortext">
+          {state.message}
+        </p>)}
+
           <label className='text-small'>
             {isLogin
               ? <><p className=' opacity-80'>{t('LogInDesc')}</p><h3 className='text-header'>{t('LogIn')}</h3></>
@@ -36,7 +46,7 @@ export default function LoginPage() {
           <br />
 
 
-          <button formAction={isLogin ? login : signup} className={`button w-full mt-6`}>
+          <button type='submit' className={`button w-full mt-6`}>
             {isLogin ? t('LogIn') : t('SignUp')}
           </button>
 

@@ -1,24 +1,30 @@
 'use server'
 
 import { revalidatePath } from 'next/cache'
-import { redirect } from 'next/navigation'
 import { createClient } from '../(auth)/utils/supabase/server.js'
+import { redirect } from 'next/navigation'
 
-export async function login(formData) {
+export async function login(prevState,formData) {
+  const email = formData.get('email')
+  const password = formData.get('password')
+
+    // Basic validation
+    if (!email || !email.includes('@') || email.length < 5) {
+      return { message: 'Invalid email format' }
+    }
+    /*
+    if (!password || password.length < 6) {
+      return { message: 'Password must be at least 6 characters' }
+    }*/
+
   const supabase = await createClient()
-
-  // type-casting here for convenience
-  // in practice, you should validate your inputs
-  const data = {
-    email: formData.get('email'),
-    password: formData.get('password'),
-  }
-
-  const { error } = await supabase.auth.signInWithPassword(data)
+  const { error } = await supabase.auth.signInWithPassword({ email, password })
 
   if (error) {
-    redirect('/error')
+
+    return { message: error.message || 'LogIn failed'} 
   }
+
   revalidatePath('/', 'layout')
   redirect('/')
 }
