@@ -21,6 +21,11 @@ export default async function RootLayout({ children }) {
 
   return (
     <html dir={dir} lang="en" className={`${montserrat.variable} ${wildworld.variable} ${platinum.variable} ${yekan.variable}`}>
+      <head>
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#E6E8E1" />
+        <link rel="apple-touch-icon" href="/images/icon-192.png" />
+      </head>
       <body className="font-montserrat">
         <div className="flex justify-center">
           <div className="container w-full px-5 pt-5 pb-32">
