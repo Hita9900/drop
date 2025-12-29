@@ -16,13 +16,11 @@ export default function Home() {
       <Prompt/>
       <TodaySubmitCard />
       <div className="h-14"></div>
-      <AllTimeLeaderboard/>
-      <div className="h-14"></div>
       <WeeklyLeaderboard/>
+      <div className="h-14"></div>
+      <AllTimeLeaderboard/>
       
 
     </>
   );
 }
-//to fix tehran time 
-export const dynamic = 'force-dynamic';

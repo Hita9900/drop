@@ -28,8 +28,7 @@ export default function Sidebar() {
         </div>
       )}
 
-      {/* Optional: close when clicking outside */}
-      {isOpen && <div className="fixed inset-0 -z-10" onClick={() => setIsOpen(false)} />}
+      
     </div>
   );
 }

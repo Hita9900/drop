@@ -10,9 +10,11 @@ export default async function TodaySubmitCard() {
         
         return(
             <div className="flex flex-col text-center">
-            <p className="text-small opacity-60">the list updates every 15 minutes</p>
+            <p className="text-small opacity-60 mt-8">the list updates every 15 minutes</p>
             <p className="mb-2">Be the first to submit a song!</p>
+            <span className="self-center flex">
             <ButtonMinimal title='Submit' address='/submit'/>
+            </span>
             </div>
         );
     }

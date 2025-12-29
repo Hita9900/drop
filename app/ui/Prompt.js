@@ -18,7 +18,7 @@ export function Prompt() {
                 <p className={`text-body mt-2 mb-1 ${ locale ==='fa'? 'font-yekan':''}`}>{Prompt.text}</p>
             </div>
         </div>
-        <div className="h-10"></div>
+        <div className="h-4"></div>
     </div>
     );
 }
