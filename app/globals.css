@@ -92,6 +92,10 @@ a {
 .halo{
   box-shadow: 0 0 10px #C8FF00a0;
 }
+.profile-halo{
+  box-shadow: 0 0 80px #C8FF00a0;
+}
+
 
 .font-wildworld {
   font-family: var(--font-wildworld);
