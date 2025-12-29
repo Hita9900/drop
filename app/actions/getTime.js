@@ -1,33 +1,45 @@
-/* this file provides the date and day index in Tehran timezone */
+//this file does not provide the date anymore. getToday() is in charge of that. im keeping this file for testing day index
 
-import { fromZonedTime, toZonedTime, format } from 'date-fns-tz';
-import { differenceInCalendarDays } from 'date-fns';
+
+import { toZonedTime, format } from 'date-fns-tz';
+import { differenceInCalendarDays, startOfDay } from 'date-fns';
+
 
 const TZ = 'Asia/Tehran';
-// Create start date as Tehran midnight on Dec 1, 2025 (explicitly parse in TZ, then to UTC)
-const CHALLENGE_START_DATE = toZonedTime(new Date('2025-11-21T00:00:00'), TZ );
+
+const CHALLENGE_START_DATE_UTC = Date.UTC(2025, 11, 16, 20, 30, 0); // Month is 0-indexed (10 = November) also Dec 17 20:30 UTC = Dec 18 00:00 Tehran 
+const challengeStartZoned = toZonedTime(new Date(CHALLENGE_START_DATE_UTC), TZ);
+const startDateOnlyTehran = startOfDay(challengeStartZoned); // Midnight Tehran on start day
+
 
 export default function getTime(now = new Date()){
   const TZ = 'Asia/Tehran';
  // Convert current time to Tehran
-  const tehranNow = fromZonedTime(now, TZ);
-  // Strip time to get Tehran date only
-  const todayTehran = new Date(
-    tehranNow.getFullYear(),
-    tehranNow.getMonth(),
-    tehranNow.getDate()
-  );
+ const tehranNow = toZonedTime(now, TZ);
 
-  // Strip time to get start date only in Tehran
-  const startTehran = fromZonedTime(CHALLENGE_START_DATE, TZ);
-  const startDateOnly = new Date(
-    startTehran.getFullYear(),
-    startTehran.getMonth(),
-    startTehran.getDate()
-  );
-  const dayIndex = differenceInCalendarDays(todayTehran, startDateOnly);
+  //console.log(format(tehranNow, 'yyyy-MM-dd HH:mm:ss'));
+
+  
+  // Get just the date (midnight) in Tehran for today
+  const todayTehran = startOfDay(tehranNow);
+
+
+  // Calculate the day index (0 = Nov 21, 1 = Nov 22, etc.)
+  const dayIndex = differenceInCalendarDays(todayTehran, startDateOnlyTehran);
+
   //console.log('Today in Tehran:', format(tehranNow, 'yyyy-MM-dd'));
-  const Time  = {dayIndex: dayIndex, tehranNow: format(tehranNow, 'yyyy-MM-dd')};
+  const Time  = {
+    dayIndex: dayIndex,
+    tehranNow: format(tehranNow, 'yyyy-MM-dd')};
 
     return (Time);
 }
+
+
+
+
+
+
+
+
+
