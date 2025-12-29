@@ -56,7 +56,7 @@ export default function ClientWeeklyLeaderboard({ users }) {
                                     <div className='flex justify-center items-center flex-col'>
                                         <p className='col-1 flex items-center justify-end font-bold text-5xl h-14 opacity-40'>#{index + 1}&nbsp;</p>
                                         <p>{user.username}</p>
-                                        <p className={`text-small opacity-80 ${locale ==='fa'?'font-yekan':''}`}>{user.total_votes} {t('Points')}</p>
+                                        {user.total_votes ? <p className={`text-small opacity-80 ${locale ==='fa'?'font-yekan':''}`}>{user.total_votes} {t('Points')}</p> : ''}
                                     </div>
                                 </div>
                             </div>

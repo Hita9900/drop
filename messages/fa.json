@@ -10,7 +10,8 @@
       "Points": "امتیاز",
       "LeaderBoard": "جدول امتیازات",
       "LeaderBoardDesc": "شرکت کنندگان برتر سه روز اخیر",
-      "AllTimeTopPlayers":"بازیکنان برتر"
+      "AllTimeTopPlayers":"بازیکنان برتر",
+      "RefreshText": "هر ۶۰ دقیقه به روز میشود"
     },
     
     "Prompt":{

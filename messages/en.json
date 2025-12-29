@@ -10,7 +10,8 @@
       "Points": "point(s)",
       "LeaderBoard": "Leaderboard",
       "LeaderBoardDesc": "top players of past 3 days",
-      "AllTimeTopPlayers":"All time top players"
+      "AllTimeTopPlayers":"All time top players",
+      "RefreshText": "resfreshes every 60 min"
     },
 
     "Prompt":{
