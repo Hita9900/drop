@@ -7,8 +7,6 @@
   --font-wildworld: 'wildworld', var(--font-montserrat);
   --font-platinum: 'platinum', var(--font-yekan);
   --font-yekan: 'yekan', Inter;
-
-
 }
 
 @theme {
@@ -33,13 +31,16 @@
     --foreground: var(--color-primary-light);
   }
 }
+html{
+  background: var(--background,#1E201D);
+}
 
 html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
   font-family: var(--font-montserrat);  
-  background: var(--background);
+  background: var(--background,#1E201D);
 }
 
 body {
