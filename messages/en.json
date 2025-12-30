@@ -9,8 +9,8 @@
       "Username":"username",
       "Points": "point(s)",
       "LeaderBoard": "Leaderboard",
-      "LeaderBoardDesc": "top players of past 3 days",
-      "AllTimeTopPlayers":"All time top players",
+      "LeaderBoardDesc": "Top Players of Past 3 Days",
+      "AllTimeTopPlayers":"All Tme Top Players",
       "RefreshText": "resfreshes every 60 min"
     },
 
