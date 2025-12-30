@@ -20,7 +20,7 @@ async function fetchToday() {
 
   if (error) throw error;
   console.log('date: ' ,data)
-  return data; // e.g. '2025-12-28'
+  return data; // 'yyyy-mm-dd'
 }
 
 export const getToday = unstable_cache(
