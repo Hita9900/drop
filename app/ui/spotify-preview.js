@@ -16,6 +16,7 @@ export default function SpotifyPreview() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [year, setYear] = useState(null);
+  const [trackId, settrackId] = useState(null);
   const [isPending, startTransition] = useTransition();
 
   const profile = useUser();
@@ -25,40 +26,48 @@ export default function SpotifyPreview() {
 
     if (!url.trim()) return;
 
+    
+    const trackId = url.split('/track/')[1]?.split('?')[0];
+    if (!trackId || trackId.length !== 22) {
+        setError('Invalid Spotify track URL');
+        setLoading(false);
+        return;
+    }
+
     setLoading(true);
     setError(null);
     setTrack(null);
 
     try {
-      const response = await fetch('/api/spotify', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ url }),
-      });
+        const response = await fetch('/api/spotify', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ url }),
+        });
 
-      const data = await response.json();
+        const data = await response.json();
 
-      if (!response.ok) {
-        setError(data.error || 'Something went wrong');
-        return;
-      }
+        if (!response.ok) {
+            setError(data.error || 'Something went wrong');
+            return;
+        }
 
-      setTrack(data);
-      
-      if (data.date) {
-        const extractedYear = data.date.split('-')[0];
-        setYear(extractedYear);
-      }
+        setTrack(data);
+        
+        if (data.date) {
+            const extractedYear = data.date.split('-')[0];
+            setYear(extractedYear);
+        }
+        settrackId(trackId)
 
     } catch (err) {
-      setError('Network error, check your connection.');
+        setError('Network error, check your connection.');
     } finally {
-      setLoading(false);
+        setLoading(false);
     }
-  };
-  
+};
   const handleSaveToDatabase = () => {
     if (!track) return;
 
@@ -66,10 +75,10 @@ export default function SpotifyPreview() {
       const result = await SubmitEntry({
         title: track.title,
         artist: track.artist,
-        track_Id: track.track_Id,
+        track_Id: trackId,
         year: year || null,
-        genres: track.genres || null,
-        duration: track.duration_ms,
+        genres: null,
+        duration: null,
         user_id: profile.id,
         cover_art: track.image || null,
       });
@@ -138,12 +147,6 @@ export default function SpotifyPreview() {
             <div className={`col-2 flex justify-end flex-col ${locale === 'fa' ? 'pr-5' : 'pl-5'}`}>
               <h2 className="text-header">{track.title}</h2>
               <p className="text-body font-light"> By {track.artist}</p>
-
-              {/*track.album && (
-                <p className="text-small opacity-80">
-                  {track.album} 
-                </p>
-              )*/}
 
               {track.date && (
                 <p className="text-small text-primary-accent opacity-80">
