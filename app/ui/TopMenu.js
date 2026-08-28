@@ -32,7 +32,7 @@ export default function TopMenu() {
             <div className="flex items-center">
                 <Link href="/profile">
                 <div className='bg-primary-accent rounded-full overflow-hidden halo'>
-                    <Image src={profile?.avatar ? "/images/ava" + profile.avatar + ".svg" : "/images/default-ava.svg"}
+                    <Image src={profile?.avatar ? "/images/ava" + profile.avatar + ".png" : "/images/default-ava.png"}
                         alt="Profile Avatar"
                         width={50} height={50}
                         className="avatar-image" />

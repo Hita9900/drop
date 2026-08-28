@@ -25,7 +25,7 @@ export default function ClientWeeklyLeaderboard({ users }) {
                         {index === 0 ?
                             (<div key={index} className='mx-auto grid grid-cols-6 gap-0 max-w-xl bg-shade-glass pb-4 px-4'>
                                 <div className='col-span-6 flex flex-col items-center pt-12 pb-6'>
-                                    <Image className='rounded-full bg-primary-accent mb-4 topplayer-boxshadow' src={'/images/ava' + user.avatar + '.svg'} width={80} height={80} alt={user.username + `'s profile`} />
+                                    <Image className='rounded-full bg-primary-accent mb-4 topplayer-boxshadow' src={'/images/ava' + user.avatar + '.png'} width={80} height={80} alt={user.username + `'s profile`} />
                                     <br />
                                     <div className='flex justify-center items-center flex-col'>
                                         <p className='col-1 flex items-center justify-end font-bold text-5xl h-14 opacity-40'>#{index + 1}&nbsp;</p>
@@ -41,7 +41,7 @@ export default function ClientWeeklyLeaderboard({ users }) {
                             :
                             (<div key={index} className='mx-auto grid grid-cols-6 gap-0 max-w-xl bg-shade-glass pb-4  px-4'>
                                 <div className='col-1 flex items-center justify-end font-bold mr-[-10px] text-5xl h-14 opacity-40'>{index + 1}</div>
-                                <div className='col-2 items-center flex'><Image className='rounded-full bg-primary-accent-shade' src={'/images/ava' + user.avatar + '.svg'} width={40} height={40} alt={user.username + `'s profile`} /></div>
+                                <div className='col-2 items-center flex'><Image className='rounded-full bg-primary-accent-shade' src={'/images/ava' + user.avatar + '.png'} width={40} height={40} alt={user.username + `'s profile`} /></div>
                                 <div className='col-span-3 flex items-center text-body'>{user.username}</div>
                                 <div className='col-start-6 flex items-center justify-center text-header font-semibold'>{user.total_votes ? user.total_votes : '0'}</div>
                             </div>)}
@@ -51,7 +51,7 @@ export default function ClientWeeklyLeaderboard({ users }) {
                 {users.map((user, index) => (<div key={index}>
                     <div key={index} className='mx-auto grid grid-cols-6 gap-0 max-w-xl bg-shade-glass pb-4 px-4'>
                                 <div className='col-span-6 flex flex-col items-center pt-12 pb-6'>
-                                    <Image className='rounded-full bg-primary-accent mb-4 topplayer-boxshadow' src={'/images/ava' + user.avatar + '.svg'} width={80} height={80} alt={user.username + `'s profile`} />
+                                    <Image className='rounded-full bg-primary-accent mb-4 topplayer-boxshadow' src={'/images/ava' + user.avatar + '.png'} width={80} height={80} alt={user.username + `'s profile`} />
                                     <br />
                                     <div className='flex justify-center items-center flex-col'>
                                         <p className='col-1 flex items-center justify-end font-bold text-5xl h-14 opacity-40'>#{index + 1}&nbsp;</p>

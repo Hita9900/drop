@@ -28,7 +28,7 @@ async function fetchTodaySongs() {
 const getTodaySongsCached = unstable_cache(
   fetchTodaySongs,
   ['today-submits'],
-  { revalidate: 900 }
+  { revalidate: 300 }
 );
 
 export default async function TodaySubmits() {
