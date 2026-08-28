@@ -9,14 +9,14 @@ const nextConfig = {
     images: {
         remotePatterns: [
             {
-                protocol: 'https',
-                hostname: 'i.scdn.co',
-                pathname: '/image/**',   // allows any image path under /image/
+                protocol: 'https', 
+                hostname: 'i.scdn.co',   // from spotify
+                pathname: '/image/**',
             },
             {
                 protocol: 'https',
-                hostname: 'image-cdn-fa.spotifycdn.com',
-                pathname: '/**',   // allows any image path
+                hostname: '*.spotifycdn.com',  // from spotify-url-info api
+                pathname: '/**',
             },
         ],
     },
