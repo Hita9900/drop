@@ -57,6 +57,36 @@ const avatarOptions = [
   { id: 18, label: 'orange buzzcut bra gal' },
   { id: 19, label: 'really ugly gal 2' },
   { id: 20, label: 'total naked guy' },
+  { id: 21, label: 'purple mohawk guy' },
+  { id: 22, label: 'curly hair glasses gal' },
+  { id: 23, label: 'bald gold chain guy' },
+  { id: 24, label: 'ponytail hoodie gal' },
+  { id: 25, label: 'ginger freckles guy' },
+  { id: 26, label: 'space buns gal' },
+  { id: 27, label: 'flat cap stuble guy' },
+  { id: 28, label: 'long hair hippie gal' },
+  { id: 29, label: 'tattoo neck guy' },
+  { id: 30, label: 'bow tie suspenders gal' },
+  { id: 31, label: 'fro hawk guy' },
+  { id: 32, label: 'blonde pigtails gal' },
+  { id: 33, label: 'eye patch guy' },
+  { id: 34, label: 'headband warrior gal' },
+  { id: 35, label: 'grey beard wizard guy' },
+  { id: 36, label: 'bob cut earrings gal' },
+  { id: 37, label: 'cap backwards guy' },
+  { id: 38, label: 'side shave gal' },
+  { id: 39, label: 'monocle top hat guy' },
+  { id: 40, label: 'bangs n choker gal' },
+  { id: 41, label: 'mullet sunglasses guy' },
+  { id: 42, label: 'dreadlocks beanie gal' },
+  { id: 43, label: 'scar face guy' },
+  { id: 44, label: 'pixie cut gal' },
+  { id: 45, label: 'bandana cowboy guy' },
+  { id: 46, label: 'twin tails gal' },
+  { id: 47, label: 'afro pick guy' },
+  { id: 48, label: 'beret artist gal' },
+  { id: 49, label: 'visor sweatband guy' },
+  { id: 50, label: 'flower crown gal' },
 ];
 
 const availableAvatars = avatarOptions.map((opt) => opt.id);
@@ -152,7 +182,7 @@ export default function Profile() {
   {/* larger preview of selected */}
   <div className="flex justify-center my-4">
     <Image
-      src={`/images/ava${avatar}.svg`}
+      src={`/images/ava${avatar}.png`}
       alt="Selected avatar"
       width={160}
       height={160}
@@ -161,20 +191,20 @@ export default function Profile() {
   </div>
 
   {/* Grid of avatars */}
-  <div className="grid grid-cols-5 sm:grid-cols-10 gap-4 max-h-96 overflow-y-auto p-4 glass-bg rounded-xl">
+  <div className="grid grid-cols-5 sm:grid-cols-10 gap-4 gap-y-4 overflow-y-scroll p-4 glass-bg rounded-xl">
     {avatarOptions.map((opt) => (
       <button
         key={opt.id}
         type="button"
         onClick={() => setAvatar(opt.id)}
-        className={`relative justify-center flex rounded-full overflow-hidden transition-all ${
+        className={`relative justify-center flex rounded-full overflow-hidden aspect-square transition-all ${
           avatar === opt.id 
             ? 'ring-4 ring-primary-accent bg-primary-accent-shade scale-110' 
             : 'hover:scale-105 opacity-60'
         }`}
       >
         <Image
-          src={`/images/ava${opt.id}.svg`}
+          src={`/images/ava${opt.id}.png`}
           alt={opt.label}
           width={60}
           height={60}
