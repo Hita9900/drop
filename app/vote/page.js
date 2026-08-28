@@ -1,4 +1,4 @@
-import TodaySubmits from "../actions/TodaySubmits";
+import TodaySubmitsVote from "../actions/TodaySubmitsVote";
 import Image from 'next/image';
 import { createClient } from '@/app/(auth)/utils/supabase/server';
 import VoteButton from '../ui/VoteButton';
@@ -6,7 +6,7 @@ import TopMenu from "../ui/TopMenu";
 import { Frown, InfoIcon } from "lucide-react";
 
 export default async function votePage() {
-    const songs = await TodaySubmits();
+    const songs = await TodaySubmitsVote();
     const supabase = await createClient();
     const { data: { user } } = await supabase.auth.getUser();
 
