@@ -13,6 +13,11 @@ const nextConfig = {
                 hostname: 'i.scdn.co',
                 pathname: '/image/**',   // allows any image path under /image/
             },
+            {
+                protocol: 'https',
+                hostname: 'image-cdn-fa.spotifycdn.com',
+                pathname: '/**',   // allows any image path
+            },
         ],
     },
 };
