@@ -1,13 +1,14 @@
 //this file does not provide the date anymore. getToday() is in charge of that. im keeping this file for testing day index
 
-
 import { toZonedTime, format } from 'date-fns-tz';
 import { differenceInCalendarDays, startOfDay } from 'date-fns';
 
 
 const TZ = 'Asia/Tehran';
 
-const CHALLENGE_START_DATE_UTC = Date.UTC(2025, 11, 16, 20, 30, 0); // Month is 0-indexed (10 = November) also Dec 17 20:30 UTC = Dec 18 00:00 Tehran 
+const CHALLENGE_START_DATE_UTC = Date.UTC(2026, 8, 10, 20, 30, 0);
+// Month is 0-indexed (10 = November) also Dec 17 20:30 UTC = Dec 18 00:00 Tehran 
+// example: if day one is September 5th, it should be : (2026, 8, 4, 20, 30, 0)
 const challengeStartZoned = toZonedTime(new Date(CHALLENGE_START_DATE_UTC), TZ);
 const startDateOnlyTehran = startOfDay(challengeStartZoned); // Midnight Tehran on start day
 
