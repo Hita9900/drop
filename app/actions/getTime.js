@@ -6,7 +6,7 @@ import { differenceInCalendarDays, startOfDay } from 'date-fns';
 
 const TZ = 'Asia/Tehran';
 
-const CHALLENGE_START_DATE_UTC = Date.UTC(2026, 8, 10, 20, 30, 0);
+const CHALLENGE_START_DATE_UTC = Date.UTC(2026, 8, 13, 20, 30, 0);
 // Month is 0-indexed (10 = November) also Dec 17 20:30 UTC = Dec 18 00:00 Tehran 
 // example: if day one is September 5th, it should be : (2026, 8, 4, 20, 30, 0)
 const challengeStartZoned = toZonedTime(new Date(CHALLENGE_START_DATE_UTC), TZ);
