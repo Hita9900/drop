@@ -22,7 +22,7 @@ export default function RegisterForm({ challengeId }) {
 
             <button
                 type="submit"
-                className="button"
+                className="button mt-2.5"
                 disabled={pending}
             >
                 {pending ? 'Registering...' : 'Register me!'}
