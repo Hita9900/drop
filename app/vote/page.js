@@ -4,6 +4,7 @@ import { createClient } from '@/app/(auth)/utils/supabase/server';
 import VoteButton from '../ui/VoteButton';
 import TopMenu from "../ui/TopMenu";
 import { Frown, InfoIcon } from "lucide-react";
+import LogoTopBar from "../ui/LogoTopBar";
 
 export default async function votePage() {
     const songs = await TodaySubmitsVote();
@@ -11,7 +12,14 @@ export default async function votePage() {
     const { data: { user } } = await supabase.auth.getUser();
 
     if (!songs || songs.length === 0) {
-        return <div className="p-4">No songs submitted today.</div>;
+        return <div className="p-4">
+            <LogoTopBar/>
+            <div className="p-4 pt-10 mx-auto max-w-xl">
+                <Frown size={30} />
+                        <p className="pt-3">Nobody has sent anything yet</p>
+                        <p className="text-small opacity-80">submitted songs will be shown here</p>
+                    </div>
+            </div>;
     }
 
     if (!user) {
