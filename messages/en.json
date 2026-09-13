@@ -10,7 +10,7 @@
       "Points": "point(s)",
       "LeaderBoard": "Leaderboard",
       "LeaderBoardDesc": "Top Players of Past 3 Days",
-      "AllTimeTopPlayers":"All Tme Top Players",
+      "AllTimeTopPlayers":"All Time Top Players",
       "RefreshText": "resfreshes every 60 min"
     },
 
@@ -18,9 +18,9 @@
       "day": "Day",
       "Daily Prompt":"DAILY PROMT",
       "todayPrompt":"Today's Prompt",
-      "PromptD1" : "1",
-      "PromptD2" : "2",
-      "PromptD3" : "3",
+      "PromptD1" : "A song you dedicate to a friend",
+      "PromptD2" : "A song that is perfect in anyway but the vocal is meh",
+      "PromptD3" : "A song connected to a past relationship",
       "PromptD4" : "4",
       "PromptD5" : "5",
       "PromptD6" : "6",
