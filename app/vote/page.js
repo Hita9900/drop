@@ -13,13 +13,13 @@ export default async function votePage() {
 
     if (!songs || songs.length === 0) {
         return <div className="p-4">
-            <LogoTopBar/>
+            <LogoTopBar />
             <div className="p-4 pt-10 mx-auto max-w-xl">
                 <Frown size={30} />
-                        <p className="pt-3">Nobody has sent anything yet</p>
-                        <p className="text-small opacity-80">submitted songs will be shown here</p>
-                    </div>
-            </div>;
+                <p className="pt-3">Nobody has sent anything yet</p>
+                <p className="text-small opacity-80">submitted songs will be shown here</p>
+            </div>
+        </div>;
     }
 
     if (!user) {
@@ -64,17 +64,19 @@ export default async function votePage() {
                         <h2 className="text-header mb-6">Your Votes Today</h2>
                         {votedSongs.map((song) => (
                             <div key={song.id} className="pb-4 flex items-center opacity-80">
-                                <Image
-                                    src={song.cover_art}
-                                    width={50}
-                                    height={50}
-                                    alt={song.title + " by " + song.artist}
-                                    className="mr-3"
-                                />
-                                <div className="flex-1">
-                                    <p className="text-body">{song.title}</p>
-                                    <p className="text-small opacity-60">{song.artist}</p>
-                                </div>
+                                <a href={"https://open.spotify.com/track/" + song.track_Id} target="_blank" className="flex items-center flex-1">
+                                    <Image
+                                        src={song.cover_art}
+                                        width={50}
+                                        height={50}
+                                        alt={song.title + " by " + song.artist}
+                                        className="mr-3"
+                                    />
+                                    <div className="flex-1">
+                                        <p className="text-body">{song.title}</p>
+                                        <p className="text-small opacity-60">{song.artist}</p>
+                                    </div>
+                                </a>
                             </div>
                         ))}
                     </div>
@@ -86,19 +88,22 @@ export default async function votePage() {
                         <h2 className="text-header mb-6">Available to vote</h2>
                         {notVotedSongs.map((song) => (
                             <div key={song.id} className="pb-4 flex items-center">
-                                <Image
-                                    src={song.cover_art}
-                                    width={50}
-                                    height={50}
-                                    alt={song.title + " by " + song.artist}
-                                    className="mr-3"
-                                />
-                                <div className="flex-1">
-                                    <p className="text-body">{song.title}</p>
-                                    <p className="text-small opacity-60">{song.artist}</p>
-                                </div>
+                                <a href={"https://open.spotify.com/track/" + song.track_Id} target="_blank" className="flex items-center flex-1">
+                                    <Image
+                                        src={song.cover_art}
+                                        width={50}
+                                        height={50}
+                                        alt={song.title + " by " + song.artist}
+                                        className="mr-3"
+                                    />
+                                    <div className="flex-1">
+                                        <p className="text-body">{song.title}</p>
+                                        <p className="text-small opacity-60">{song.artist}</p>
+                                    </div>
+                                </a>
                                 <VoteButton songId={song.id} />
                             </div>
+
                         ))}
                     </div>
                 )}
